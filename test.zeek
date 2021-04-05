@@ -1,18 +1,18 @@
-global dict : table[addr] of set[string] = table();
+global dictory : table[addr] of set[string] = table();
 event http_header (c: connection, is_orig: bool, name: string, value: string)
 {
     if(name=="USER-AGENT")
     {
-            if(c$id$orig_h in dict)
+            if(c$id$orig_h in dictory)
             {
-                    if(!(to_lower(value) in dict[c$id$orig_h]))
+                    if(!(to_lower(value) in dictory[c$id$orig_h]))
                     {
-                            add dict[c$id$orig_h][to_lower(value)];
+                            add dictory[c$id$orig_h][to_lower(value)];
                     }
             }
             else
             {
-                    dict[c$id$orig_h]=set(to_lower(value));
+                    dictory[c$id$orig_h]=set(to_lower(value));
             }
     }
 }
