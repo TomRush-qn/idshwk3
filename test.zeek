@@ -18,7 +18,7 @@ event http_header (c: connection, is_orig: bool, name: string, value: string)
 }
 event zeek_done()
 {
-	for (Addr, Set in dict)
+	for (Addr, Set in dictory)
 	{
 		if(|Set|>=3)
 		{
